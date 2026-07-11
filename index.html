@@ -429,7 +429,7 @@
       <a href="#approach">Approach</a>
       <a href="#contact">Contact</a>
     </div>
-    <p>© <span id="yr">2026</span> Murych Consulting LLC · Melrose Park, IL</p>
+    <p>Melrose Park, IL</p>
   </div>
 </footer>
 
@@ -457,9 +457,6 @@
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // Year (Date.now guarded — static fallback already in HTML)
-  try { document.getElementById('yr').textContent = new Date().getFullYear(); } catch(e){}
 </script>
 </body>
 </html>
