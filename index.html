@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Murych Consulting — Automation for American Trucking Companies</title>
+<meta name="description" content="Murych Consulting LLC helps U.S. trucking companies automate dispatch, telematics, compliance and back-office operations — less manual work, fewer errors, cleaner data.">
+<meta name="theme-color" content="#111316">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Murych Consulting — Automation for American Trucking Companies">
+<meta property="og:description" content="We automate dispatch, telematics, IFTA/compliance and back-office operations for U.S. carriers.">
+<meta property="og:locale" content="en_US">
+
+<!-- Favicon: inline SVG monogram -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111316'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' fill='%23F7F6F2' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#111316;
+    --ink-soft:#3d4148;
+    --muted:#6b7078;
+    --bg:#F7F6F2;
+    --bg-2:#efede7;
+    --line:#e0ddd4;
+    --accent:#C8752D;
+    --accent-deep:#a95f1f;
+    --card:#fdfcfa;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:.2px}
+  a{color:inherit;text-decoration:none}
+  .accent{color:var(--accent)}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,246,242,.82);
+    backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease;
+  }
+  header.scrolled{border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:-.2px}
+  .mark{
+    width:34px;height:34px;border-radius:9px;background:var(--ink);
+    color:var(--bg);display:grid;place-items:center;
+    font-family:'Instrument Serif',Georgia,serif;font-size:21px;line-height:1;
+  }
+  .brand small{display:block;font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+  .nav-links{display:flex;align-items:center;gap:34px}
+  .nav-links a{font-size:14.5px;color:var(--ink-soft);transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:14.5px;font-weight:500;padding:11px 20px;border-radius:999px;
+    background:var(--ink);color:var(--bg);border:1px solid var(--ink);
+    transition:transform .2s ease, background .2s ease, box-shadow .2s ease;
+    white-space:nowrap;cursor:pointer;
+  }
+  .btn:hover{background:#000;transform:translateY(-1px);box-shadow:0 8px 22px rgba(17,19,22,.18)}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn.ghost:hover{background:var(--bg-2);box-shadow:none;transform:none}
+  .btn.accent-btn{background:var(--accent);border-color:var(--accent)}
+  .btn.accent-btn:hover{background:var(--accent-deep);box-shadow:0 8px 22px rgba(200,117,45,.28)}
+  .menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+  .menu-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:4px 0;transition:.25s}
+
+  /* Hero */
+  .hero{padding:clamp(64px,11vw,132px) 0 clamp(52px,8vw,92px)}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:26px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(200,117,45,.14)}
+  h1{
+    font-size:clamp(38px,6.6vw,74px);line-height:1.04;letter-spacing:-1.4px;
+    font-weight:600;max-width:15ch;
+  }
+  h1 em{font-style:normal;font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:0}
+  .lead{font-size:clamp(17px,2.1vw,20px);color:var(--ink-soft);max-width:56ch;margin-top:28px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px}
+  .hero-note{margin-top:22px;font-size:13.5px;color:var(--muted)}
+
+  /* Trust bar */
+  .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 0}
+  .trust-inner{display:flex;align-items:center;gap:14px 44px;flex-wrap:wrap}
+  .trust-label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+  .logos{display:flex;align-items:center;gap:28px 40px;flex-wrap:wrap}
+  .logos span{font-weight:600;font-size:16.5px;color:#8a8f97;letter-spacing:-.2px;transition:color .25s}
+  .logos span:hover{color:var(--ink-soft)}
+
+  /* Sections */
+  section{scroll-margin-top:86px}
+  .block{padding:clamp(72px,11vw,128px) 0}
+  .sec-head{max-width:64ch}
+  .sec-tag{font-size:12.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+  h2{font-size:clamp(28px,4.4vw,46px);line-height:1.12;letter-spacing:-.9px;font-weight:600}
+  h2 em{font-style:normal;font-family:'Instrument Serif',Georgia,serif;font-weight:400}
+  .sec-sub{font-size:clamp(16px,2vw,18px);color:var(--ink-soft);margin-top:18px;max-width:60ch}
+
+  /* Services grid */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:52px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:34px 32px;transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(17,19,22,.09);border-color:#d3cfc4}
+  .ic{
+    width:46px;height:46px;border-radius:12px;background:var(--bg-2);
+    display:grid;place-items:center;margin-bottom:22px;color:var(--ink);
+  }
+  .ic svg{width:23px;height:23px}
+  .card h3{font-size:20px;font-weight:600;letter-spacing:-.3px;margin-bottom:10px}
+  .card p{font-size:15px;color:var(--muted);line-height:1.65}
+  .card ul{list-style:none;margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+  .card li{font-size:12.5px;color:var(--ink-soft);background:var(--bg-2);border-radius:999px;padding:5px 12px}
+
+  /* Approach */
+  .approach{background:var(--ink);color:var(--bg)}
+  .approach .sec-tag{color:var(--accent)}
+  .approach h2{color:var(--bg)}
+  .approach .sec-sub{color:#b7bbc2}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:56px;counter-reset:step}
+  .step{border-top:1px solid #2a2e34;padding-top:26px}
+  .step .n{font-family:'Instrument Serif',Georgia,serif;font-size:40px;color:var(--accent);line-height:1;margin-bottom:16px}
+  .step h4{font-size:19px;font-weight:600;margin-bottom:9px;letter-spacing:-.2px}
+  .step p{font-size:14.5px;color:#a9adb5;line-height:1.6}
+
+  /* Stats */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
+  .stat{border-left:2px solid var(--accent);padding-left:22px}
+  .stat .num{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(40px,6vw,60px);line-height:1;letter-spacing:-1px}
+  .stat .lbl{font-size:14.5px;color:var(--muted);margin-top:10px;max-width:26ch}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:start;margin-top:20px}
+  .about-grid p{font-size:clamp(17px,2.2vw,21px);color:var(--ink-soft);line-height:1.65}
+  .about-grid p + p{margin-top:20px}
+  .about-side{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 30px}
+  .about-side h4{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;font-weight:500}
+  .about-side ul{list-style:none}
+  .about-side li{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--ink-soft)}
+  .about-side li:last-child{border-bottom:none}
+  .about-side li svg{width:19px;height:19px;color:var(--accent);flex-shrink:0;margin-top:2px}
+
+  /* Contact */
+  .contact{background:var(--bg-2)}
+  .contact-card{
+    background:var(--ink);color:var(--bg);border-radius:24px;
+    padding:clamp(40px,6vw,72px);display:grid;grid-template-columns:1.2fr .8fr;gap:52px;align-items:center;
+  }
+  .contact-card h2{color:var(--bg);max-width:16ch}
+  .contact-card .sec-sub{color:#b7bbc2;margin-bottom:32px}
+  .contact-cta{display:flex;flex-wrap:wrap;gap:13px}
+  .contact-card .btn{background:var(--bg);color:var(--ink);border-color:var(--bg)}
+  .contact-card .btn:hover{background:#fff}
+  .contact-card .btn.accent-btn{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .contact-card .btn.accent-btn:hover{background:var(--accent-deep)}
+  .contact-details{border-left:1px solid #2a2e34;padding-left:32px}
+  .contact-details a,.contact-details p{display:block;color:#cdd0d6;font-size:15px;margin-bottom:16px;transition:color .2s}
+  .contact-details a:hover{color:#fff}
+  .contact-details .k{font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+
+  /* Footer */
+  footer{padding:44px 0;border-top:1px solid var(--line)}
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .foot .brand small{color:var(--muted)}
+  .foot p{font-size:13.5px;color:var(--muted)}
+  .foot .links{display:flex;gap:26px;font-size:13.5px;color:var(--muted)}
+  .foot .links a:hover{color:var(--ink)}
+
+  /* Reveal animation */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* Responsive */
+  @media(max-width:860px){
+    .grid,.steps,.stats,.about-grid,.contact-card{grid-template-columns:1fr}
+    .about-grid{gap:32px}
+    .contact-details{border-left:none;border-top:1px solid #2a2e34;padding-left:0;padding-top:28px}
+    .nav-links{
+      position:fixed;inset:72px 0 auto 0;background:var(--bg);flex-direction:column;
+      gap:0;align-items:stretch;border-bottom:1px solid var(--line);
+      transform:translateY(-140%);transition:transform .35s ease;padding:8px 0;
+    }
+    .nav-links.open{transform:none;box-shadow:0 20px 40px rgba(17,19,22,.1)}
+    .nav-links a{padding:15px 28px;border-bottom:1px solid var(--line)}
+    .nav-links .btn{margin:14px 28px;justify-content:center}
+    .menu-toggle{display:block}
+    .menu-toggle.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+    .menu-toggle.open span:nth-child(2){opacity:0}
+    .menu-toggle.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="Murych Consulting home">
+      <span class="mark serif">M</span>
+      <span>Murych Consulting<small>Trucking Automation</small></span>
+    </a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="btn accent-btn">Book a call</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow reveal"><span class="dot"></span> Automation partner for U.S. carriers</span>
+      <h1 class="reveal">Automation for American <em>trucking</em> companies.</h1>
+      <p class="lead reveal">We connect your dispatch, telematics, compliance and back-office tools into one clean, automated workflow — so your team spends less time on manual data entry and more time moving freight.</p>
+      <div class="hero-cta reveal">
+        <a href="#contact" class="btn accent-btn">Book a free call
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#services" class="btn ghost">Explore services</a>
+      </div>
+      <p class="hero-note reveal">Motive &amp; Samsara integrations · IFTA &amp; compliance · TMS &amp; back-office</p>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <div class="trust">
+    <div class="wrap trust-inner reveal">
+      <span class="trust-label">Works across the tools you already run</span>
+      <div class="logos">
+        <span>Motive</span>
+        <span>Samsara</span>
+        <span>QuickBooks</span>
+        <span>Google Sheets</span>
+        <span>Excel</span>
+        <span>DAT</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services" class="block">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-tag">What we do</div>
+        <h2>Fewer spreadsheets. <em>Fewer errors.</em> More visibility.</h2>
+        <p class="sec-sub">Practical automation built around how trucking companies actually operate — from the ELD in the cab to the invoice in your books.</p>
+      </div>
+      <div class="grid">
+        <div class="card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1.5"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.2"/><circle cx="18.5" cy="18.5" r="2.2"/></svg></div>
+          <h3>Dispatch &amp; TMS automation</h3>
+          <p>Automate load entry, status updates, driver assignments and notifications so dispatch runs without copy-pasting between systems.</p>
+          <ul><li>Load workflows</li><li>Status alerts</li><li>Driver comms</li></ul>
+        </div>
+        <div class="card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 16 0"/><path d="M7.5 12a4.5 4.5 0 0 1 9 0"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><path d="M12 13.4V21"/></svg></div>
+          <h3>ELD &amp; telematics integration</h3>
+          <p>Pull HOS, GPS, fault codes and IFTA mileage straight out of Motive or Samsara into the reports and dashboards your team relies on.</p>
+          <ul><li>Motive API</li><li>Samsara</li><li>Live tracking</li></ul>
+        </div>
+        <div class="card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5z"/></svg></div>
+          <h3>IFTA &amp; compliance reporting</h3>
+          <p>Auto-generate IFTA mileage, fuel and compliance reports from telematics data — accurate, audit-ready, and on time every quarter.</p>
+          <ul><li>IFTA filing prep</li><li>Fuel tax</li><li>Audit-ready</li></ul>
+        </div>
+        <div class="card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 9v11"/><path d="M13 13h3M13 16h3"/></svg></div>
+          <h3>Back-office &amp; reporting</h3>
+          <p>Automate invoicing, driver settlements, fuel reconciliation and KPI dashboards so your numbers are current without the manual crunch.</p>
+          <ul><li>Invoicing</li><li>Settlements</li><li>Dashboards</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section id="approach" class="block approach">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-tag">How we work</div>
+        <h2>A simple path from <em>manual</em> to automated.</h2>
+        <p class="sec-sub">No rip-and-replace. We build on the systems you already use and remove the busywork step by step.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="n serif">01</div>
+          <h4>Audit</h4>
+          <p>We map your current workflow — dispatch, ELD, billing — and pinpoint exactly where hours and accuracy leak out.</p>
+        </div>
+        <div class="step reveal">
+          <div class="n serif">02</div>
+          <h4>Automate</h4>
+          <p>We connect your tools and build the automations that remove double entry, delays and manual reporting.</p>
+        </div>
+        <div class="step reveal">
+          <div class="n serif">03</div>
+          <h4>Optimize</h4>
+          <p>We monitor, refine and hand over clean dashboards — plus ongoing support as your fleet grows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="block">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-tag">Why it matters</div>
+        <h2>Automation that pays for itself.</h2>
+      </div>
+      <div class="stats">
+        <div class="stat reveal">
+          <div class="num accent">10+ hrs</div>
+          <div class="lbl">of manual data entry removed from a typical week per dispatcher.</div>
+        </div>
+        <div class="stat reveal">
+          <div class="num accent">1 source</div>
+          <div class="lbl">of truth — telematics, TMS and books finally in sync.</div>
+        </div>
+        <div class="stat reveal">
+          <div class="num accent">Zero</div>
+          <div class="lbl">missed IFTA deadlines with automated quarterly reporting.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="block">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-tag">Who we are</div>
+        <h2>Built for trucking. <em>Fluent in tech.</em></h2>
+      </div>
+      <div class="about-grid">
+        <div class="reveal">
+          <p>Murych Consulting LLC is a U.S.-based automation studio focused entirely on the trucking industry. We speak both languages — the realities of dispatch, HOS and IFTA, and the APIs and tools that tie them together.</p>
+          <p>Whether you run five trucks or fifty, we design lean, reliable automations that fit your operation instead of forcing you into someone else's software. Straightforward scope, clear pricing, real results.</p>
+        </div>
+        <div class="about-side reveal">
+          <h4>Why carriers work with us</h4>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Trucking-only focus — no generic IT</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Works with your existing tools</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Motive &amp; Samsara integration experience</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Clear scope, honest pricing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="block contact">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <div>
+          <div class="sec-tag">Get started</div>
+          <h2>Let's automate the busywork out of your fleet.</h2>
+          <p class="sec-sub">Tell us what's slowing your team down. We'll show you what's worth automating first — no obligation.</p>
+          <div class="contact-cta">
+            <a href="mailto:maksimmurich@gmail.com?subject=Automation%20inquiry%20—%20Murych%20Consulting" class="btn accent-btn">Email us
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="tel:+12242013963" class="btn">Call (224) 201-3963</a>
+          </div>
+        </div>
+        <div class="contact-details">
+          <div>
+            <div class="k">Email</div>
+            <a href="mailto:maksimmurich@gmail.com">maksimmurich@gmail.com</a>
+          </div>
+          <div>
+            <div class="k">Phone</div>
+            <a href="tel:+12242013963">(224) 201-3963</a>
+          </div>
+          <div>
+            <div class="k">Office</div>
+            <p>2100 Main St, Unit 114<br>Melrose Park, IL 60160</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#top" class="brand">
+      <span class="mark serif">M</span>
+      <span>Murych Consulting LLC<small>Trucking Automation</small></span>
+    </a>
+    <div class="links">
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p>© <span id="yr">2026</span> Murych Consulting LLC · Melrose Park, IL</p>
+  </div>
+</footer>
+
+<script>
+  // Header shadow on scroll
+  const hdr = document.querySelector('header');
+  const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 8);
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  // Mobile menu
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open'); toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', false);
+  }));
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Year (Date.now guarded — static fallback already in HTML)
+  try { document.getElementById('yr').textContent = new Date().getFullYear(); } catch(e){}
+</script>
+</body>
+</html>
